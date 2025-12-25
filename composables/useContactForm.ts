@@ -31,6 +31,10 @@ export const useContactForm = () => {
   const submitSuccess = ref(false)
   const submitError = ref<string | null>(null)
 
+  // Rate limiting (prevent spam)
+  const lastSubmitTime = ref<number>(0)
+  const SUBMIT_COOLDOWN = 60000 // 60 seconds between submissions
+
   // Validation rules
   const validateName = (name: string): string | undefined => {
     if (!name.trim()) {
@@ -107,11 +111,34 @@ export const useContactForm = () => {
     )
   })
 
+  // Sanitize input to prevent XSS and other attacks
+  const sanitizeInput = (input: string): string => {
+    return input
+      .trim()
+      .replace(/[<>]/g, '') // Remove < and > to prevent XSS
+      .substring(0, 1000) // Limit length to prevent abuse
+  }
+
   // Submit form
-  const submitForm = async () => {
+  const submitForm = async (honeypot?: string) => {
     // Reset previous states
     submitSuccess.value = false
     submitError.value = null
+
+    // Check honeypot field to detect bots
+    if (honeypot && honeypot.trim() !== '') {
+      // Bot detected - silently fail (don't reveal it's a honeypot)
+      submitError.value = 'Erro ao enviar mensagem. Por favor, tente novamente.'
+      return
+    }
+
+    // Check rate limit to prevent spam
+    const now = Date.now()
+    if (now - lastSubmitTime.value < SUBMIT_COOLDOWN) {
+      const waitTime = Math.ceil((SUBMIT_COOLDOWN - (now - lastSubmitTime.value)) / 1000)
+      submitError.value = `Por favor, aguarde ${waitTime} segundos antes de enviar novamente.`
+      return
+    }
 
     // Validate form
     if (!validateForm()) {
@@ -133,14 +160,14 @@ export const useContactForm = () => {
     isSubmitting.value = true
 
     try {
-      // Send email using EmailJS
+      // Send email using EmailJS with sanitized inputs
       const response = await emailjs.send(
         serviceId,
         templateId,
         {
-          from_name: formData.value.name,
-          from_email: formData.value.email,
-          message: formData.value.message,
+          from_name: sanitizeInput(formData.value.name),
+          from_email: sanitizeInput(formData.value.email),
+          message: sanitizeInput(formData.value.message),
           to_name: 'Helanco',
         },
         publicKey
@@ -148,6 +175,7 @@ export const useContactForm = () => {
 
       if (response.status === 200) {
         submitSuccess.value = true
+        lastSubmitTime.value = now // Update last submit time to prevent spam
         // Reset form
         formData.value = {
           name: '',
