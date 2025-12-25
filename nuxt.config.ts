@@ -32,6 +32,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
+      siteUrl: '',
       emailjsServiceId: '',
       emailjsTemplateId: '',
       emailjsPublicKey: '',
@@ -41,7 +42,7 @@ export default defineNuxtConfig({
 
   image: {
     quality: 80,
-    formats: ['webp', 'avif', 'jpeg'],
+    format: ['webp', 'avif', 'jpeg'],
     screens: {
       xs: 320,
       sm: 640,
@@ -69,6 +70,16 @@ export default defineNuxtConfig({
   nitro: {
     compressPublicAssets: true,
     minify: true,
+    routeRules: {
+      '/**': {
+        headers: {
+          'X-Content-Type-Options': 'nosniff',
+          'X-Frame-Options': 'DENY',
+          'X-XSS-Protection': '1; mode=block',
+          'Referrer-Policy': 'strict-origin-when-cross-origin'
+        }
+      }
+    }
   },
 
   // App performance

@@ -51,7 +51,8 @@
 </template>
 
 <script setup lang="ts">
-const siteUrl = 'https://helanco.com' // TODO: Update with actual domain
+const config = useRuntimeConfig()
+const siteUrl = (config.public.siteUrl || 'https://helanco.vercel.app') as string
 const pageUrl = `${siteUrl}/loja`
 const pageTitle = 'Loja em Breve — Helanco'
 const pageDescription = 'Nossa loja online está em desenvolvimento. Em breve você poderá adquirir produtos exclusivos da Helanco com toda comodidade.'

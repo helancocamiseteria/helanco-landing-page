@@ -2,16 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Homepage -->
   <url>
-    <loc>https://helanco.com/</loc>
-    <lastmod>2025-12-21</lastmod>
+    <loc>https://helanco.vercel.app/</loc>
+    <lastmod>2025-12-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   
   <!-- Shop Page (Coming Soon) -->
   <url>
-    <loc>https://helanco.com/loja</loc>
-    <lastmod>2025-12-21</lastmod>
+    <loc>https://helanco.vercel.app/loja</loc>
+    <lastmod>2025-12-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

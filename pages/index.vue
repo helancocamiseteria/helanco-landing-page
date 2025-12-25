@@ -15,10 +15,11 @@
 // Initialize scroll animations
 useScrollAnimation()
 
-const siteUrl = 'https://helanco.com' // TODO: Update with actual domain
+const config = useRuntimeConfig()
+const siteUrl = (config.public.siteUrl || 'https://helanco.vercel.app') as string
 const siteName = 'Helanco'
 const siteDescription = 'Fábrica de roupas premium especializada em vestuário de malha e tecido plano. Amostragem, corte e costura, bordado, controle de qualidade e logística global desde 1995.'
-const siteImage = `${siteUrl}/og-image.jpg` // TODO: Add actual OG image
+const siteImage = `${siteUrl}/og-image.jpg`
 
 useHead({
   title: 'Helanco',
