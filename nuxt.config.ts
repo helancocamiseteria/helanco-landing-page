@@ -100,6 +100,8 @@ export default defineNuxtConfig({
       meta: [
         // Improve mobile performance
         { name: 'viewport', content: 'width=device-width, initial-scale=1, viewport-fit=cover' },
+        // Google Search Console verification
+        { name: 'google-site-verification', content: 'LOO9e3EzeJWA9pyxiheVhAffi_gfza5lOAxg-b4EDW0' },
       ]
     }
   },
