@@ -1,5 +1,5 @@
 <template>
-  <section id="sobre" class="section" style="background: var(--surface); position: relative; z-index: 10; padding-top: 12rem;">
+  <section id="sobre" class="section" style="background: var(--surface); position: relative; z-index: 10; padding-top: 12rem; padding-bottom: 12rem;">
     <div class="container">
       <div style="display:grid; gap:2.5rem; grid-template-columns: 1fr; align-items:center;">
         <div style="max-width: 65ch;" data-animate>

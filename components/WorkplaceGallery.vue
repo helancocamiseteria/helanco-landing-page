@@ -1,16 +1,22 @@
 <template>
-  <section id="galeria" class="section">
+  <section id="galeria" class="section" style="background: var(--surface)">
     <div class="container">
-      <div style="text-align: center; max-width: 65ch; margin: 0 auto 2.5rem;">
-        <h2 style="font-size: clamp(1.75rem, 4vw, 2.5rem);">Nosso Ambiente de Trabalho</h2>
-        <p class="muted" style="font-size: 1.05rem;">Conheça nossas instalações e equipe dedicada à qualidade.</p>
+      <div style="text-align: center; max-width: 65ch; margin: 0 auto 2.5rem">
+        <h2 style="font-size: clamp(1.75rem, 4vw, 2.5rem)">
+          Nosso Ambiente de Trabalho
+        </h2>
+        <p class="muted" style="font-size: 1.05rem">
+          Conheça nossas instalações e equipe dedicada à qualidade.
+        </p>
       </div>
-      
+
       <div class="facilities-content">
         <div class="facility-card card">
           <h3>Infraestrutura Moderna</h3>
           <ul class="facility-list">
-            <li>Equipamentos de última geração para corte, costura e acabamento</li>
+            <li>
+              Equipamentos de última geração para corte, costura e acabamento
+            </li>
             <li>Instalações projetadas para otimizar a produção</li>
             <li>Ambiente organizado e seguro para nossa equipe</li>
             <li>Tecnologia moderna aplicada a cada etapa do processo</li>
@@ -45,7 +51,7 @@
           </ul>
         </div>
       </div>
-      
+
       <!-- <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: rgba(212,132,62,0.05); border-radius: 12px; border: 1px solid rgba(212,132,62,0.15);">
         <p class="muted" style="font-size: 1.05rem; margin-bottom: 0.5rem;">
           <strong style="color: var(--accent);">Em breve:</strong> Fotos das nossas instalações e equipe!
@@ -70,12 +76,14 @@
 
 .facility-card {
   padding: 2rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .facility-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(212,132,62,0.3);
+  box-shadow: 0 12px 32px rgba(212, 132, 62, 0.3);
 }
 
 .facility-card h3 {

@@ -2,7 +2,7 @@
   <div>
     <header class="site-header">
       <div class="container navbar">
-        <NuxtLink to="/" class="brand" aria-label="Helanco Início">
+        <NuxtLink to="/" class="brand" aria-label="Helanco Início" @click="scrollToTop">
           <img src="/images/logo.png" alt="Helanco Logo" class="brand-logo" />
           <span>HELANCO</span>
         </NuxtLink>
@@ -54,10 +54,10 @@
         aria-label="Menu principal mobile"
       >
         <div class="mobile-nav-header">
-          <div class="brand">
+          <NuxtLink to="/" class="brand" @click="closeMobileMenu(); scrollToTop()">
             <img src="/images/logo.png" alt="Helanco Logo" class="brand-logo" />
             <span>Helanco</span>
-          </div>
+          </NuxtLink>
           <button 
             @click="closeMobileMenu"
             class="close-button"
@@ -88,10 +88,10 @@
       <div class="container">
         <div style="display:grid; gap:2rem; grid-template-columns: repeat(1, 1fr); margin-bottom: 1.5rem;">
           <div style="text-align: center;">
-            <div style="display:flex; align-items:center; gap:.6rem; margin-bottom: 1rem; justify-content: center;">
+            <NuxtLink to="/" style="display:flex; align-items:center; gap:.6rem; margin-bottom: 1rem; justify-content: center; text-decoration: none;" @click="scrollToTop">
               <img src="/images/logo.png" alt="Helanco Logo" class="brand-logo" />
               <strong style="color:#fff; font-size: 1.1rem;">Helanco</strong>
-            </div>
+            </NuxtLink>
             <p class="muted" style="max-width: 35ch; font-size: .95rem; margin: 0 auto 1rem;">Transformando ideias em vestuário de qualidade desde 2005.</p>
             
             <!-- Informações da Empresa -->

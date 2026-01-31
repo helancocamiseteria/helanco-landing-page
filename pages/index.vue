@@ -8,6 +8,7 @@
     <WorkplaceGallery />
     <InstagramFeed />
     <ContactCta />
+    <LocationMap />
   </div>
 </template>
 
